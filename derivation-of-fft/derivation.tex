@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\begin{document}
+
+Here I will derive the \textbf{Fast Fourier Transform} from the Discrete Fourier transform equation given by wikipedia using the same symmetry exploited by the \textbf{Cooley–Tukey} algorithm. \\ \\
+Lets begin... \\
+%
+Start with the general Fourier transform equation...
+$$X_k = \sum_{n=0}^{N-1}x_n(cos(-2\pi k \frac{n}{N}) + i sin(-2\pi k \frac{n}{N})), k \in \mathbb{Z}$$
+We will apply euler's identity $e^{ix} = cos(x) + i sin(x)$ \\
+$$X_k = \sum_{n=0}^{N-1}x_n \cdot e^{-i2\pi k \frac{n}{N}}, k \in \mathbb{Z}$$
+This form makes the equation simpler for optimizatin shown below \\
+
+\begin{align*}
+X_k &= \sum_{n=0}^{N-1}x_n \cdot e^{-i2\pi k \frac{n}{N}} \\
+&= \sum_{m=0}^{N/2-1}x_{2m} \cdot e^{-i2\pi k \frac{2m}{N}} + \sum_{m=0}^{N/2-1}x_{2m+1} \cdot e^{-i2\pi k \frac{2m+1}{N}} \\
+&= (\sum_{m=0}^{N/2-1}x_{2m} \cdot e^{-i2\pi k \frac{2m}{N}}) + e^{-i2\pi k \frac{1}{N}} \sum_{m=0}^{N/2-1}x_{2m+1} \cdot e^{-i2\pi k \frac{2m}{N}} \\
+\end{align*}
+
+\end{document}w
